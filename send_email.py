@@ -2,9 +2,9 @@ import smtplib
 from email.message import EmailMessage
 
 
-EMAIL_ADDRESS = 'ardynubanos@gmail.com'
+EMAIL_ADDRESS = 'user@gmail.com'
 EMAIL_PASSWORD = '<password>'
-contacts = ['ardynubanos@gmail.com', 'cziapco@gmail.com']
+contacts = ['user2@gmail.com', 'user3@gmail.com']
 
 msg = EmailMessage()
 msg['Subject'] = 'This should be a pdf'
